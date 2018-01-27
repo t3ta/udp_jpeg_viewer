@@ -7,11 +7,12 @@ import time
 
 def main():
     port = 12345
-    bufsize = 1024*64
+    bufsize = 1024*8 
 
     cv2.namedWindow("viewer", 1)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('', port))
+
     while True:
         data = sock.recv(bufsize)
         narray = numpy.fromstring(data, dtype = "uint8")
